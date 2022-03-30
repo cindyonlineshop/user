@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:kozarni_ecome/screen/home_screen.dart';
+import 'package:colours/colours.dart';
 
 class OnBoardingPage extends StatelessWidget {
   @override
@@ -8,64 +9,123 @@ class OnBoardingPage extends StatelessWidget {
     child: IntroductionScreen(
       pages: [
         PageViewModel(
-          title: "CINDY BRANDED FASHION SHOP",
-          body: ''' EXPORT QUALITY
+          title: "🌼 Cindy Branded Export Fashion 🌼",
+          bodyWidget: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('''
+            🔸 100% Brand New
+
+            🔸 Export Garment Factory Outlet
+
+            🔸 Trendy Export Quality Branded Clothing
+
+            🔸 Various Brands to choose
+
+            🔸 Fair Price
+
+            🔸 Budget Clothes
+
+            🔸 Local Made
+
+            🔸 Deliver the whole Myanmar
+
+            🔸 Safe & Secure''',
+                style: TextStyle(fontSize: 16),),
+            ],
+          ),
+
+          image: buildImage('assets/1.jpg'),
+          decoration: getPageDecoration(),
+        ),
+
+        PageViewModel(
+          title: '''Cindy Branded Export Fashion မှ 
+          နွေးထွေးစွာ ကြိုဆိုပါတယ် 🌹''',
+          bodyWidget: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('''
+          အရည်အသွေးမြင့် Branded Export 
           
-MADE IN MYANMAR
+          အဝတ်အထည် အသစ်တွေကို 
+          
+          စျေးနှုန်းချိုသာစွာနဲ့ ဖုန်းလေးသုံးရင်း 
+          
+          မြန်မာပြည်အနှံ့မှ ဝယ်ယူနိုင်ပါပြီ 🍀
+          
+          Cash on Delivery or Online Payment 
+          
+          ( အိမ်ရောက်ငွေချေစနစ် 
+          
+          သို့မဟုတ် 
+          
+          ငွေကြိုလွှဲစနစ် ) ☑
+          
+          KBZ Mobile Banking 
+          
+          AYA Mobile Banking
+          
+          CB Mobile Banking
+          
+          YOMA Mobile Banking
+          
+          Kpay
+          
+          CB Pay
+          
+          AYA Pay
+          
+          Wave Pay 
+         
+          💳 ကြိုက်တဲ့ Online Payment နဲ့ ရှင်း 
+          
+          လုံးဝအပိုထပ်ပေးစရာမလိုတဲ့  
+          
+          (0%) ဝန်ဆောင်မှု 🍀''',
+                style: TextStyle(fontSize: 16),),
+            ],
+          ),
 
-FAIR PRICE
-
-EXPORT CLOTHING
-
-EXPORT FASHION
-
-CINDY EXPORT FASHION
-
-CINDY BRANDED EXPORT FASHION''',
-          image: buildImage('assets/shopping.jpeg'),
-          decoration: getPageDecoration(),
-        ),
-
-        PageViewModel(
-          title: "CINDY BRANDED FASHION SHOP",
-          body: ''' 
-          𝐂𝐢𝐧𝐝𝐲 ဆိုတာ 
-          🌿 ️တစ်နေကုန် အေးမြမယ်...
-          🌿 ️ပေါ့ပါးမယ်..
-          🌿 ️သက်သောင့်သက်သာရှိမယ်...
-          🌿 ️ရိုးရှင်းစွာလှပမယ်...
-          🌿 ️ဘောင်းဘီနဲ့ဝတ်ဝတ် 
-          🌿 စကပ်နဲ့ဝတ်ဝတ်လှနေမယ်..
-          🌿 ️ဘယ်နေရာသွားသွား 
-          🌿 ဝတ်လို့ရစေရမယ်...
-          🌿 ️ဈေးနှုန်းသက်သာမယ်...''',
-          image: buildImage('assets/1.png'),
-          decoration: getPageDecoration(),
-        ),
-        PageViewModel(
-          title: 'EVERYTIME YOU WILL NEED MY CINDY',
-          body: '''
-          🌿  ခရီးထွက်ကြတဲ့အခါ...
-          🌿  Shopping ထွကိကြတဲ့အခါ...
-          🌿  မုန့်ထွက်စားကြတဲ့အခါ...
-          🌿 လျှောက်လည်တဲ့အခါတိုင်း 
-          ❝   𝐂𝐢𝐧𝐝𝐲 ကို သတိရလိုက်ပါနော်  ❞ ''',
           image: buildImage('assets/2.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: "EVERYTIME YOU WILL NEED MY CINDY",
-          body: '''
-          🌧  မိုးလေးကလဲရွာ....
-          💨  လေလေးကလဲတိုက်....
-          🤔  ဘာဝတ်ပြီး အပြင်ထွက်ရမလဲနော် ❓''',
-          image: buildImage('assets/4.png'),
+          title: "🌼 Cindy Branded Export Fashion 🌼",
+          bodyWidget: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('''
+Casual အတွက်လား?
+          
+Office Wear လား?
+
+Sports Wear ရှာနေလား?
+
+Party အတွက်လား? 
+
+👨အမျိုးသားဝတ်
+
+👩အမျိုးသမီးဝတ် 
+
+👦👧ကလေးဝတ် အတွက် 
+
+ရွေးချယ်စရာ Brands အစုံ၊ 
+
+အထည်ပုံစံ အစုံလည်းရှိမယ် 🍀''',
+                style: TextStyle(fontSize: 16),),
+            ],
+          ),
+          image: buildImage('assets/3.jpg'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
-          title: 'HAPPY AND ONLY MY CINDY',
-          body: ''' ❝  အမြဲတမ်း လွတ်လပ်ပေါ့ပါးနေစေဖို့
-              𝐂𝐢𝐧𝐝𝐲 ဝတ်ကြစို့  ❞ ''',
+          title: '🌼 Cindy Branded Export Fashion 🌼',
+          body: ''' Fashion အတွက်ဆို 
+          
+          Cindy Branded Export Fashion ကိုသာ 
+          
+          သတိရလိုက်ပါ! 🌹 ''',
           footer: Padding(
             padding: const EdgeInsets.only(top: 10),
             child: ButtonWidget(
@@ -73,16 +133,16 @@ CINDY BRANDED EXPORT FASHION''',
               onClicked: () => goToHome(context),
             ),
           ),
-          image: buildImage('assets/3.png'),
+          image: buildImage('assets/4.jpg'),
           decoration: getPageDecoration(),
         ),
       ],
       done: Text("", style: TextStyle(fontWeight: FontWeight.w600)),
       onDone: () => goToHome(context),
       showSkipButton: true,
-      skip: Text('SKIP', style: TextStyle(fontSize: 16, color: Colors.orange),),
+      skip: Text('SKIP', style: TextStyle(fontSize: 16, color: Colors.red),),
       onSkip: () => goToHome(context),
-      next: Icon(Icons.forward_outlined, size: 30, color: Colors.orange),
+      next: Icon(Icons.forward_outlined, size: 30, color: Colors.red),
       dotsDecorator: getDotDecoration(),
       onChange: (index) => print('Page $index selected'),
       globalBackgroundColor: Colors.white,
@@ -101,11 +161,12 @@ CINDY BRANDED EXPORT FASHION''',
   );
 
   Widget buildImage(String path) =>
-      Center(child: Image.asset(path, width: 350));
+      Image.asset(path, width: double.infinity,
+        height: double.infinity, fit: BoxFit.cover, );
 
   DotsDecorator getDotDecoration() => DotsDecorator(
-    color: Colors.indigo,
-    activeColor: Colors.orange,
+    color: Colours.red,
+    activeColor: Colours.gold,
     size: Size(10, 10),
     activeSize: Size(22, 10),
     activeShape: RoundedRectangleBorder(
@@ -114,10 +175,12 @@ CINDY BRANDED EXPORT FASHION''',
   );
 
   PageDecoration getPageDecoration() => PageDecoration(
-    titleTextStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-    titlePadding: EdgeInsets.only(top: 20),
-    descriptionPadding: EdgeInsets.only(top: 30).copyWith(bottom: 0),
-    imagePadding: EdgeInsets.only(top: 30),
+    bodyTextStyle: TextStyle(fontSize: 16,
+    ),
+    titleTextStyle: TextStyle(fontSize: 18,
+        fontWeight: FontWeight.bold, color: Colors.black),
+    titlePadding: EdgeInsets.only(top: 10),
+    descriptionPadding: EdgeInsets.only(top: 20).copyWith(bottom: 0),
     pageColor: Colors.white,
   );
 }
@@ -136,11 +199,11 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => RaisedButton(
     onPressed: onClicked,
-    color: Colors.orange,
+    color: Colours.gold,
     shape: StadiumBorder(),
     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
     child: Text(text,
-      style: TextStyle(color: Colors.white, fontSize: 16),
+      style: TextStyle(color: Colors.black, fontSize: 16),
     ),
   );
 }

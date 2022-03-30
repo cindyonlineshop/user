@@ -45,25 +45,25 @@ class OrderHistory extends StatelessWidget {
                                   headerBuilder: (context, isExpand) {
                                     return ListTile(
                                       title: Text(
-                                          "ကုန်ပစ္စည်းအရေအတွက် = ${purchase.items.length}ခု"),
+                                          "ကုန်ပစ္စည်းအရေအတွက် = ${purchase.items.length}",
+                                      style: TextStyle(fontSize: 12),),
                                       subtitle: Text(
-                                          "${purchase.totalPrice} ကျပ် "
-                                          "ပို့ခ ${purchase.deliveryTownshipInfo[1]}ကျပ် ပေါင်းပြီး"),
+                                          "${purchase.totalPrice} ကျပ်"
+                                          "  (${purchase.deliveryTownshipInfo[0]} ပါပြီး)",
+                                        style: TextStyle(fontSize: 12),),
                                       trailing: Text(
                                           "${purchase.dateTime.day}/${purchase.dateTime.month}/${purchase.dateTime.year}"),
                                     );
                                   },
                                   body: SizedBox(
                                     height: purchase.items.length * 50,
-                                    width: size.width * 0.8,
+                                    width: size.width,
                                     child: ListView.builder(
                                       padding: EdgeInsets.all(0),
                                       itemCount: purchase.items.length,
-                                      itemBuilder: (_, o) => Padding(
-                                        padding: const EdgeInsets.only(top: 5),
-                                        child: Row(
+                                      itemBuilder: (_, o) => Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
+                                              MainAxisAlignment.spaceBetween,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
@@ -77,7 +77,7 @@ class OrderHistory extends StatelessWidget {
                                             ),
                                             Text(
                                               "${purchase.items[o].toString().split(',')[1]}",
-                                              style: TextStyle(fontSize: 10),
+                                              style: TextStyle(fontSize: 12),
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 1,
                                             ),
@@ -92,26 +92,28 @@ class OrderHistory extends StatelessWidget {
                                                   Text(
                                                     "${purchase.items[o].toString().split(',')[2]}",
                                                     style:
-                                                        TextStyle(fontSize: 10),
+                                                        TextStyle(fontSize: 12),
                                                   ),
                                                   Text(
                                                     "${purchase.items[o].toString().split(',')[3]}",
                                                     style:
-                                                        TextStyle(fontSize: 10),
+                                                        TextStyle(fontSize: 12),
                                                   )
                                                 ],
                                               ),
                                             ),
                                             Text(
                                               "${purchase.items[o].toString().split(',').last} x  ${purchase.items[o].toString().split(',')[4]} ထည်",
-                                              style: TextStyle(fontSize: 10),
+                                              style: TextStyle(fontSize: 12),
                                             ),
+
                                           ],
                                         ),
+
                                       ),
+
                                     ),
                                   ),
-                                ),
                               ]),
                         ),
                       );

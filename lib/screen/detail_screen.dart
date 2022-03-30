@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:colours/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
@@ -111,7 +112,7 @@ class DetailScreen extends StatelessWidget {
                             Icons.star,
                             size: 20,
                             color: index <= controller.selectedItem.value.star
-                                ? homeIndicatorColor
+                                ? Colours.gold
                                 : Colors.grey,
                           ),
                         ),
@@ -386,13 +387,6 @@ class DetailScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         width: double.infinity,
         height: 65,
-        // decoration: BoxDecoration(
-        //   color: detailBackgroundColor,
-        //   borderRadius: BorderRadius.only(
-        //     topLeft: Radius.circular(20),
-        //     topRight: Radius.circular(20),
-        //   ),
-        // ),
         padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
         child: ElevatedButton(
           style: buttonStyle,
@@ -408,13 +402,15 @@ class DetailScreen extends StatelessWidget {
                   controller.selectedItem.value.discountprice,
                 ],
                 priceString: [
-                  "၁ ထည် လက်လီ ဈေးနှုန်",
+                  "၁ ထည် လက်လီ ဈေးနှုန်း",
                   controller.selectedItem.value.brand,
                 ],
               ),
             );
           },
-          child: Text("၀ယ်ယူရန်"),
+          child: Text("၀ယ်ယူရန်", style: (
+          TextStyle(color: Colors.black)
+          ),),
         ),
       ),
     );
@@ -530,7 +526,7 @@ class _AddToCartState extends State<AddToCart> {
                 Get.to(HomeScreen());
               }
             },
-            child: Text("၀ယ်ယူရန်"),
+            child: Text("၀ယ်ယူရန်", style: TextStyle(color: Colors.black)),
           ),
         ),
       ],

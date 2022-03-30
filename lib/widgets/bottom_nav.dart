@@ -1,3 +1,4 @@
+import 'package:colours/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -42,7 +43,7 @@ class BottomNav extends StatelessWidget {
                     icon: FaIcon(
                       FontAwesomeIcons.truck,
                       color: controller.navIndex.value == 0
-                          ? homeIndicatorColor
+                          ? Colours.gold
                           : null,
                     ),
                   ),
@@ -50,6 +51,7 @@ class BottomNav extends StatelessWidget {
                 ],
               ),
             ),
+
             Expanded(
               child: Column(
                 children: [
@@ -60,7 +62,7 @@ class BottomNav extends StatelessWidget {
                     icon: FaIcon(
                       FontAwesomeIcons.shirtsinbulk,
                       color: controller.navIndex.value == 1
-                          ? homeIndicatorColor
+                          ? Colours.gold
                           : null,
                     ),
                   ),
@@ -68,6 +70,7 @@ class BottomNav extends StatelessWidget {
                 ],
               ),
             ),
+
             Expanded(
               child: Column(
                 children: [
@@ -75,12 +78,31 @@ class BottomNav extends StatelessWidget {
                     onPressed: () {
                       controller.changeNav(2);
                     },
+                    icon: Image.asset("assets/hotsale.png",
+                      color: controller.navIndex.value == 2
+                          ? null
+                          : Colors.black,
+                    ),
+                  ),
+                  Text("Hot Sales"),
+                ],
+              ),
+
+            ),
+
+            Expanded(
+              child: Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      controller.changeNav(3);
+                    },
                     icon: Stack(
                       children: [
                         FaIcon(
                           FontAwesomeIcons.shoppingCart,
-                          color: controller.navIndex.value == 2
-                              ? homeIndicatorColor
+                          color: controller.navIndex.value == 3
+                              ? Colours.gold
                               : null,
                         ),
                         CircleAvatar(
@@ -104,12 +126,12 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      controller.changeNav(3);
+                      controller.changeNav(4);
                     },
                     icon: Icon(
                       FontAwesomeIcons.solidHeart,
-                      color: controller.navIndex.value == 3
-                          ? homeIndicatorColor
+                      color: controller.navIndex.value == 4
+                          ? Colours.gold
                           : null,
                     ),
                   ),
@@ -122,17 +144,17 @@ class BottomNav extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      controller.changeNav(4);
+                      controller.changeNav(5);
                     },
                     icon: FaIcon(
-                      FontAwesomeIcons.stickyNote,
-                      color: controller.navIndex.value == 4
-                          ? homeIndicatorColor
+                      FontAwesomeIcons.box,
+                      color: controller.navIndex.value == 5
+                          ? Colours.gold
                           : null,
                     ),
                   ),
                   Text(
-                    "Order History",
+                    "My Orders",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),

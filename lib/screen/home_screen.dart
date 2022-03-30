@@ -14,10 +14,12 @@ import 'package:kozarni_ecome/screen/view/order_history.dart';
 import 'package:kozarni_ecome/widgets/bottom_nav.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'view/hot.dart';
+
 List<Widget> _template = [
   HomeView(),
   BrandView(),
-  //HotView(),
+  HotView(),
   CartView(),
   FavouriteView(),
   OrderHistory(),
@@ -104,11 +106,13 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: appBarColor,
         elevation: 0,
         title: Text(
-          "𝐂𝐢𝐧𝐝𝐲 Export & Clothing Brand Fashion",
+          "CINDY BRANDED EXPORT FASHION",
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
             color: appBarTitleColor,
+            wordSpacing: 1,
+            letterSpacing: 1,
           ),
         ),
         // centerTitle: true,
@@ -137,53 +141,59 @@ class _HomeScreenState extends State<HomeScreen> {
           //     ),
           //   ),
           // )
-          ElevatedButton(
-            style: ButtonStyle(
-              alignment: Alignment.center,
-              backgroundColor: MaterialStateProperty.all(Colors.white),
-              elevation: MaterialStateProperty.resolveWith<double>(
-                // As you said you dont need elevation. I'm returning 0 in both case
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return 0;
-                  }
-                  return 0; // Defer to the widget's default.
-                },
+          SizedBox(
+            width: 50,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                alignment: Alignment.center,
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                elevation: MaterialStateProperty.resolveWith<double>(
+                  // As you said you dont need elevation. I'm returning 0 in both case
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.disabled)) {
+                      return 0;
+                    }
+                    return 0; // Defer to the widget's default.
+                  },
+                ),
               ),
-            ),
-            onPressed: () => Get.toNamed(searchScreen),
-            child: FaIcon(
-              FontAwesomeIcons.search,
-              color: Colors.black,
-              size: 20,
+              onPressed: () => Get.toNamed(searchScreen),
+              child: FaIcon(
+                FontAwesomeIcons.search,
+                color: Colors.black,
+                size: 20,
+              ),
             ),
           ),
 
-          ElevatedButton(
-            style: ButtonStyle(
-              alignment: Alignment.center,
-              backgroundColor: MaterialStateProperty.all(Colors.white),
-              elevation: MaterialStateProperty.resolveWith<double>(
-                // As you said you dont need elevation. I'm returning 0 in both case
-                (Set<MaterialState> states) {
-                  if (states.contains(MaterialState.disabled)) {
-                    return 0;
-                  }
-                  return 0; // Defer to the widget's default.
-                },
+          SizedBox(
+            width: 50,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                alignment: Alignment.center,
+                backgroundColor: MaterialStateProperty.all(Colors.white),
+                elevation: MaterialStateProperty.resolveWith<double>(
+                  // As you said you dont need elevation. I'm returning 0 in both case
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.disabled)) {
+                      return 0;
+                    }
+                    return 0; // Defer to the widget's default.
+                  },
+                ),
               ),
-            ),
-            onPressed: () async {
-              try {
-                await launch('https://m.me/Cindy.Branded.Export.Fashion');
-              } catch (e) {
-                print(e);
-              }
-            },
-            child: FaIcon(
-              FontAwesomeIcons.facebookMessenger,
-              color: Colors.blue,
-              size: 20,
+              onPressed: () async {
+                try {
+                  await launch('https://m.me/Cindy.Branded.Export.Fashion');
+                } catch (e) {
+                  print(e);
+                }
+              },
+              child: FaIcon(
+                FontAwesomeIcons.facebookMessenger,
+                color: Colors.blue,
+                size: 20,
+              ),
             ),
           ),
           // Container(

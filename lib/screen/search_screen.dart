@@ -21,41 +21,19 @@ class SearchScreen extends StatelessWidget {
         backgroundColor: appBarColor,
         elevation: 0,
         title: Text(
-          "𝐂𝐢𝐧𝐝𝐲 Export & Clothing Brand Fashion",
+          "",
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: appBarTitleColor,
+            wordSpacing: 1,
+            letterSpacing: 1,
           ),
         ),
         // centerTitle: true,
         actions: [
-          // InkWell(
-          //   onTap: () {
-          //     ///TODO
-          //   },
-          //   child: Container(
-          //     margin: EdgeInsets.only(right: 10, top: 10, bottom: 10),
-          //     padding: EdgeInsets.only(left: 10, right: 10),
-          //     alignment: Alignment.center,
-          //     decoration: BoxDecoration(
-          //         color: Colors.white,
-          //         borderRadius: BorderRadius.circular(7),
-          //         boxShadow: [
-          //           BoxShadow(
-          //             color: Colors.grey[200]!,
-          //             spreadRadius: 1,
-          //             offset: Offset(0, 1),
-          //           )
-          //         ]),
-          //     child: Icon(
-          //       Icons.search,
-          //       color: Colors.black,
-          //     ),
-          //   ),
-          // )
           Container(
-            width: MediaQuery.of(context).size.width * 0.6,
+            width: MediaQuery.of(context).size.width * 0.75,
             height: 50,
             child: TextField(
               autofocus: true,
@@ -95,30 +73,6 @@ class SearchScreen extends StatelessWidget {
               size: 20,
             ),
           ),
-          // Container(
-          //   margin: EdgeInsets.only(
-          //     top: 7,
-          //     bottom: 10,
-          //     right: 7,
-          //   ),
-          //   child: ElevatedButton(
-          //     style: ButtonStyle(
-          //       backgroundColor: MaterialStateProperty.all(Colors.white),
-          //       overlayColor: MaterialStateProperty.all(Colors.black12),
-          //     ),
-          //     onPressed: () async {
-          //       try {
-          //         await launch('https://m.me/begoniazue');
-          //       } catch (e) {
-          //         print(e);
-          //       }
-          //     },
-          //     child: FaIcon(
-          //       FontAwesomeIcons.facebookMessenger,
-          //       color: Colors.blue,
-          //     ),
-          //   ),
-          // )
         ],
       ),
       body: Obx(() {

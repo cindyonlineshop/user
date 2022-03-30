@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:colours/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -159,16 +160,10 @@ class CartView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "ပို့ဆောင်စရိတ်",
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
+
                         //DropDown TownShip List
                         Container(
-                          width: 100,
+                          width: 200,
                           height: 50,
                           child:
                               GetBuilder<HomeController>(builder: (controller) {
@@ -188,16 +183,22 @@ class CartView extends StatelessWidget {
                                   child: Text(
                                     controller.townShipNameAndFee["townName"] ??
                                         "မြို့နယ်",
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
+                                    style: TextStyle(fontSize: 12),
                                   ),
                                 ),
                                 //DropDown Icon
                                 Expanded(
-                                    child: Icon(FontAwesomeIcons.angleDown)),
+                                    child: Icon(FontAwesomeIcons.angleUp)),
                               ]),
                             );
                           }),
+                        ),
+                        Text(
+                          "ပို့ဆောင်စရိတ်",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                         GetBuilder<HomeController>(builder: (controller) {
                           return Text(
@@ -263,7 +264,7 @@ class CartView extends StatelessWidget {
           margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
           child: ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(homeIndicatorColor),
+              backgroundColor: MaterialStateProperty.all(Colours.gold),
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
             onPressed: () {
@@ -284,7 +285,7 @@ class CartView extends StatelessWidget {
                 Get.snackbar('Error', "Cart is empty");
               }
             },
-            child: Text("Order တင်ရန် နှိပ်ပါ"),
+            child: Text("Order တင်ရန် နှိပ်ပါ", style: TextStyle(color: Colors.black),),
           ),
         )
       ],
@@ -293,18 +294,18 @@ class CartView extends StatelessWidget {
 
   Widget divisionDialogWidget() {
     return Align(
-      alignment: Alignment.center,
+      alignment: Alignment.topLeft,
       child: GetBuilder<HomeController>(builder: (controller) {
         return Container(
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(),
-              bottom: BorderSide(),
-              left: BorderSide(),
-              right: BorderSide(),
-            ),
-          ),
-          width: 150,
+          // decoration: BoxDecoration(
+          //   border: Border(
+          //     top: BorderSide(),
+          //     bottom: BorderSide(),
+          //     left: BorderSide(),
+          //     right: BorderSide(),
+          //   ),
+          // ),
+          width: double.infinity,
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: divisionList.length,
@@ -332,9 +333,12 @@ class CartView extends StatelessWidget {
                       : Colors.white,
                   duration: const Duration(milliseconds: 200),
                   child:
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     //Text
-                    Text(divisionList[divisionIndex].name),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Text(divisionList[divisionIndex].name),
+                    ),
                     SizedBox(width: 10),
                     Icon(FontAwesomeIcons.angleRight),
                   ]),
@@ -350,17 +354,16 @@ class CartView extends StatelessWidget {
   Widget townShipDialog({required Division division}) {
     HomeController _controller = Get.find();
     return Align(
-      alignment: Alignment.bottomCenter,
       child: Container(
-        width: 200,
-        height: MediaQuery.of(Get.context!).size.height * 0.4,
+        width: MediaQuery.of(Get.context!).size.width,
+        height: MediaQuery.of(Get.context!).size.height,
         decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(),
-            bottom: BorderSide(),
-            left: BorderSide(),
-            right: BorderSide(),
-          ),
+          // border: Border(
+          //   top: BorderSide(),
+          //   bottom: BorderSide(),
+          //   left: BorderSide(),
+          //   right: BorderSide(),
+          // ),
           color: Colors.white,
         ),
         child: ListView(
@@ -407,16 +410,16 @@ class PaymentOptionContent extends StatelessWidget {
           height: 50,
           options: PaymentOptions.CashOnDelivery,
           icon: FontAwesomeIcons.truck,
-          iconColor: Colors.amber,
-          text: "Cash On Delivery",
+          iconColor: Colors.red,
+          text: "   Cash On Delivery",
         ),
         SizedBox(height: 5),
         CustomCheckBox(
           height: 50,
           options: PaymentOptions.PrePay,
           icon: FontAwesomeIcons.moneyBill,
-          iconColor: Colors.blue,
-          text: "Pre-Pay",
+          iconColor: Colours.gold,
+          text: "   Pre-Pay",
         ),
       ]),
     );
@@ -430,11 +433,8 @@ Widget nextButton() {
     height: 50,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: Colors.orange,
-      borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(20),
-        bottomRight: Radius.circular(20),
-      ),
+      color: Colours.gold,
+      borderRadius: BorderRadius.circular(20),
     ),
     child: TextButton(
       onPressed: () {
@@ -444,7 +444,9 @@ Widget nextButton() {
           Get.toNamed(checkOutScreen);
         }
       },
-      child: Text("Next  ➡", style: TextStyle(color: Colors.white)),
+      child: Text(" Next   ➡", style: TextStyle(color: Colors.black,
+      fontSize: 16,
+      letterSpacing: 1, wordSpacing: 1)),
     ),
   );
 }
