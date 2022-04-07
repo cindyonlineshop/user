@@ -49,8 +49,8 @@ class CartView extends StatelessWidget {
                           imageUrl: photo,
                           // "$baseUrl$itemUrl${controller.getItem(controller.myCart[i].id).photo}/get",
                           width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                          height: 140,
+                          fit: BoxFit.fitHeight,
                         ),
                       ),
                       SizedBox(
@@ -184,6 +184,8 @@ class CartView extends StatelessWidget {
                                     controller.townShipNameAndFee["townName"] ??
                                         "မြို့နယ်",
                                     style: TextStyle(fontSize: 12),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                                 //DropDown Icon
@@ -203,7 +205,7 @@ class CartView extends StatelessWidget {
                         GetBuilder<HomeController>(builder: (controller) {
                           return Text(
                             controller.townShipNameAndFee.isEmpty
-                                ? "0ကျပ်"
+                                ? "0 ကျပ်"
                                 : " ${controller.townShipNameAndFee["fee"]} ကျပ်",
                             style: TextStyle(
                               fontSize: 12,
@@ -411,7 +413,7 @@ class PaymentOptionContent extends StatelessWidget {
           options: PaymentOptions.CashOnDelivery,
           icon: FontAwesomeIcons.truck,
           iconColor: Colors.red,
-          text: "   Cash On Delivery",
+          text: "အိမ်ရောက်ငွေချေ",
         ),
         SizedBox(height: 5),
         CustomCheckBox(
@@ -419,7 +421,7 @@ class PaymentOptionContent extends StatelessWidget {
           options: PaymentOptions.PrePay,
           icon: FontAwesomeIcons.moneyBill,
           iconColor: Colours.gold,
-          text: "   Pre-Pay",
+          text: "ကြိုတင်ငွေရှင်း",
         ),
       ]),
     );

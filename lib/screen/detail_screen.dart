@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:colours/colours.dart';
+import 'package:custom_full_image_screen/custom_full_image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/route_manager.dart';
@@ -10,6 +11,7 @@ import 'package:kozarni_ecome/data/constant.dart';
 import 'package:get/get.dart';
 import 'package:kozarni_ecome/expaned_widget.dart';
 import 'package:kozarni_ecome/model/hive_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'home_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -108,22 +110,20 @@ class DetailScreen extends StatelessWidget {
                       Row(
                         children: List.generate(
                           5,
-                          (index) => Icon(
+                              (index) => Icon(
                             Icons.star,
                             size: 20,
-                            color: index <= controller.selectedItem.value.star
-                                ? Colours.gold
-                                : Colors.grey,
+                            color: Colours.gold,
                           ),
                         ),
                       ),
                       //Favourite Icon
                       ValueListenableBuilder(
                         valueListenable:
-                            Hive.box<HiveItem>(boxName).listenable(),
+                        Hive.box<HiveItem>(boxName).listenable(),
                         builder: (context, Box<HiveItem> box, widget) {
                           final currentObj =
-                              box.get(controller.selectedItem.value.id);
+                          box.get(controller.selectedItem.value.id);
 
                           if (!(currentObj == null)) {
                             return IconButton(
@@ -212,79 +212,29 @@ class DetailScreen extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Text(
+                  // "⏰ Delivery Time",
+                  "⏰ ပို့ဆောင်ရန် ကြာမြင့်ချိန် ( Delivery Time )",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      children: [
-                        Text(
-                          "⏰ Delivery Time",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "Within 3 Days",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          "💁 Availability ",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "In Stock",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "📞 Contact Phone ",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "     09 7777 0 222 8",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                    Text(
+                      // "⏰ Delivery Time",
+                      "🚚  ရခိုင်ပြည်နယ် ၊ တနင်္သာရီတိုင်း ၊ ကချင်ပြည်နယ် များ ရှိ မြို့များအတွက် ၃ ရက် မှ ၇ ရက် အတွင်း ကြာမြင့်မှာ ဖြစ်ပြီး ၊ ရန်ကုန်တိုင်း နှင့် အခြားကျန်ရှိသော ပြည်နယ် နှင့် တိုင်းများ  ရှိ မြို့နယ်များ အတွက် ၂ ရက် မှ ၃ ရက်အတွင်း အထည်များ ရောက်ရှိမှာ ဖြစ်ပါတယ် ။",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
@@ -292,20 +242,34 @@ class DetailScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 30),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: CachedNetworkImage(
-                          imageUrl: controller.selectedItem.value.photo2,
-                          width: 150,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 30),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: ImageCachedFullscreen(
+                                imageUrl: controller.selectedItem.value.photo2,
+                                imageBorderRadius: 7,
+                                imageWidth: 150,
+                                imageHeight: 200,
+                                imageFit: BoxFit.cover,
+                                imageDetailsHeight: double.infinity,
+                                imageDetailsWidth: double.infinity,
+                                imageDetailsFit: BoxFit.fitWidth,
+                                withHeroAnimation: true,
+                                placeholder: Container(),
+                                placeholderDetails: Center(child: CircularProgressIndicator()),),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+
                     SizedBox(
-                      width: 40,
+                      width: 30,
                     ),
                     Expanded(
                       child: Column(
@@ -314,70 +278,136 @@ class DetailScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(bottom: 30),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: CachedNetworkImage(
+                              borderRadius: BorderRadius.circular(10),
+                              child: ImageCachedFullscreen(
                                 imageUrl: controller.selectedItem.value.photo3,
-                                width: 150,
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
+                                imageBorderRadius: 7,
+                                imageWidth: 150,
+                                imageHeight: 200,
+                                imageFit: BoxFit.cover,
+                                imageDetailsHeight: double.infinity,
+                                imageDetailsWidth: double.infinity,
+                                imageDetailsFit: BoxFit.fitWidth,
+                                withHeroAnimation: true,
+                                placeholder: Container(),
+                                placeholderDetails: Center(child: CircularProgressIndicator()),),
                             ),
                           ),
                         ],
                       ),
                     ),
+
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      "🏠 Shop - 1  ( Thanlyin )",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          "🏠 Shop - 1  ( Thanlyin )",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+
+                        TextButton(
+                          onPressed: () => launch("tel://09777702228"),
+                          child: Text(
+                            "📞     09 7777 0 222 8",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+
+                        ),
+                      ],
                     ),
+
+
+
                     SizedBox(
                       height: 5,
                     ),
                     Text(
-                      'အမှတ် 116 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
+                      'အမှတ် 62 ၊ သတိပဌာန်လမ်း ၊ မြို့မတောင်ရပ်ကွက် ၊ သန်လျင်မြို့နယ် ၊ ရန်ကုန်မြို့။',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                       ),
-                    )
+                    ),
                   ],
                 ),
+
+
+
+
                 SizedBox(
                   height: 20,
                 ),
+
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      "🏠 Shop - 2  ( Dawbon )",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          "🏠 Shop - 2  ( Dawbon )",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+
+                        TextButton(
+                          onPressed: () => launch("tel://09777703338"),
+                          child: Text(
+                            "📞     09 7777 0 333 8",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
-                      'အမှတ် 192 ၊ ယမုံနာလမ်း ၊ ဇေယျာသီရိရပ်ကွက်, ဒေါပုံမြို့နယ် ။ (မာန်ပြေကားဂိတ်နားမရောက်ခင်...ဇေယျာသီရိ ၈ လမ်းထိပ်)',
+                      'အမှတ် 192 ၊ ယမုံနာလမ်း ၊ ဇေယျာသီရိရပ်ကွက် ၊ ဒေါပုံမြို့နယ် ။ (မာန်ပြေကားဂိတ်နားမရောက်ခင်...ဇေယျာသီရိ ၈ လမ်းထိပ်)',
                       style: TextStyle(
                         fontSize: 15,
                         color: Colors.black,
                       ),
                     )
                   ],
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+
+                Text(
+                  '🌼 𝐂𝐇𝐎𝐎𝐒𝐄 𝐓𝐇𝐄 𝐁𝐄𝐒𝐓 𝐎𝐔𝐓𝐅𝐈𝐓𝐒, 𝐂𝐇𝐎𝐎𝐒𝐄 𝐔𝐒! 🌼',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black,
+                  ),
+                ),
+
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),
@@ -387,6 +417,13 @@ class DetailScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         width: double.infinity,
         height: 65,
+        // decoration: BoxDecoration(
+        //   color: detailBackgroundColor,
+        //   borderRadius: BorderRadius.only(
+        //     topLeft: Radius.circular(20),
+        //     topRight: Radius.circular(20),
+        //   ),
+        // ),
         padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
         child: ElevatedButton(
           style: buttonStyle,
@@ -408,9 +445,7 @@ class DetailScreen extends StatelessWidget {
               ),
             );
           },
-          child: Text("၀ယ်ယူရန်", style: (
-          TextStyle(color: Colors.black)
-          ),),
+          child: Text("၀ယ်ယူရန်", style: TextStyle(color: Colors.black),),
         ),
       ),
     );
@@ -452,12 +487,12 @@ class _AddToCartState extends State<AddToCart> {
           items: controller.selectedItem.value.color
               .split(',')
               .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(
-                      e,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ))
+            value: e,
+            child: Text(
+              e,
+              style: TextStyle(fontSize: 12),
+            ),
+          ))
               .toList(),
         ),
         SizedBox(
@@ -475,12 +510,12 @@ class _AddToCartState extends State<AddToCart> {
           items: controller.selectedItem.value.size
               .split(',')
               .map((e) => DropdownMenuItem(
-                    value: e,
-                    child: Text(
-                      e,
-                      style: TextStyle(fontSize: 12),
-                    ),
-                  ))
+            value: e,
+            child: Text(
+              e,
+              style: TextStyle(fontSize: 12),
+            ),
+          ))
               .toList(),
         ),
         //Price Wholesale (or) Retail
@@ -498,7 +533,7 @@ class _AddToCartState extends State<AddToCart> {
           },
           items: List.generate(
             widget.priceString.length,
-            (index) => DropdownMenuItem(
+                (index) => DropdownMenuItem(
               value: widget.priceString[index],
               child: Text(
                 widget.priceString[index],
@@ -526,7 +561,7 @@ class _AddToCartState extends State<AddToCart> {
                 Get.to(HomeScreen());
               }
             },
-            child: Text("၀ယ်ယူရန်", style: TextStyle(color: Colors.black)),
+            child: Text("၀ယ်ယူရန်", style: TextStyle(color: Colors.black),),
           ),
         ),
       ],

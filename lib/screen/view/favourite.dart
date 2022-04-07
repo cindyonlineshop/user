@@ -57,10 +57,10 @@ class _FavouriteViewState extends State<FavouriteView> {
                                 child: Hero(
                                   tag: hiveItem.photo,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                     child: CachedNetworkImage(
                                       imageUrl: hiveItem.photo,
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.fitHeight,
                                     ),
                                   ),
                                 ),

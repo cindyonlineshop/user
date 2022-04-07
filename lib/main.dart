@@ -25,6 +25,21 @@ Future<void> main() async {
   await Hive.openBox<HiveItem>(boxName);
   await Hive.openBox<HivePurchase>(purchaseBox);
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+
+  print('User granted permission: ${settings.authorizationStatus}');
+
+
   Get.put(HomeController());
   runApp(MyApp());
 }
@@ -40,6 +55,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: "Cindy",
       debugShowCheckedModeBanner: false,
       initialRoute: introScreen,
       getPages: routes,

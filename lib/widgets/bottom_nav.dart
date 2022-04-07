@@ -47,7 +47,7 @@ class BottomNav extends StatelessWidget {
                           : null,
                     ),
                   ),
-                  Text("Export"),
+                  Text("Export", style: TextStyle(fontSize: 11),),
                 ],
               ),
             ),
@@ -66,7 +66,7 @@ class BottomNav extends StatelessWidget {
                           : null,
                     ),
                   ),
-                  Text("Brand"),
+                  Text("Brand", style: TextStyle(fontSize: 11),),
                 ],
               ),
             ),
@@ -84,7 +84,7 @@ class BottomNav extends StatelessWidget {
                           : Colors.black,
                     ),
                   ),
-                  Text("Hot Sales"),
+                  Text("Hot Sales", style: TextStyle(fontSize: 11),),
                 ],
               ),
 
@@ -106,7 +106,7 @@ class BottomNav extends StatelessWidget {
                               : null,
                         ),
                         CircleAvatar(
-                            backgroundColor: Colors.orange,
+                            backgroundColor: Colors.red,
                             minRadius: 0,
                             maxRadius: 10,
                             child: Text(
@@ -117,7 +117,7 @@ class BottomNav extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text("Cart"),
+                  Text("Cart", style: TextStyle(fontSize: 11),),
                 ],
               ),
             ),
@@ -131,11 +131,11 @@ class BottomNav extends StatelessWidget {
                     icon: Icon(
                       FontAwesomeIcons.solidHeart,
                       color: controller.navIndex.value == 4
-                          ? Colours.gold
+                          ? Colours.red
                           : null,
                     ),
                   ),
-                  Text("Favourite"),
+                  Text("Favourite", style: TextStyle(fontSize: 11),),
                 ],
               ),
             ),
@@ -147,16 +147,16 @@ class BottomNav extends StatelessWidget {
                       controller.changeNav(5);
                     },
                     icon: FaIcon(
-                      FontAwesomeIcons.box,
+                      FontAwesomeIcons.shoppingBag,
                       color: controller.navIndex.value == 5
                           ? Colours.gold
                           : null,
                     ),
                   ),
                   Text(
-                    "My Orders",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
+                    "Orders",
+                    style: TextStyle(fontSize: 11),
+
                   ),
                 ],
               ),

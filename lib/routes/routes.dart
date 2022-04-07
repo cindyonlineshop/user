@@ -53,10 +53,10 @@ List<GetPage> routes = [
     name: purchaseScreen,
     page: () => PurchaseScreen(),
   ),
-  GetPage(
-    name: blueToothScreen,
-    page: () => BlueToothPrintScreen(),
-  ),
+  // GetPage(
+  //   name: blueToothScreen,
+  //   page: () => BlueToothPrintScreen(),
+  // ),
   GetPage(
     name: searchScreen,
     page: () => SearchScreen(),
