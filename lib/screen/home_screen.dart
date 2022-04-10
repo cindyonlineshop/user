@@ -36,66 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   FlutterLocalNotificationsPlugin? fltNotification;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    notitficationPermission();
-    initMessaging();
-  }
 
-  void notitficationPermission() async {
-    await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-  }
 
-  void initMessaging() async {
-    var androiInit = AndroidInitializationSettings('@mipmap/ic_launcher');
-
-    var iosInit = IOSInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-    );
-
-    var initSetting = InitializationSettings(android: androiInit, iOS: iosInit);
-
-    fltNotification = FlutterLocalNotificationsPlugin();
-
-    fltNotification!.initialize(initSetting);
-
-    if (messaging != null) {
-      print('vvvvvvv');
-    }
-
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      showNotification(message);
-    });
-
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {});
-  }
-
-  void showNotification(RemoteMessage message) async {
-    var androidDetails = AndroidNotificationDetails(
-      '1',
-      message.notification!.title ?? '',
-      icon: '@mipmap/ic_launcher',
-      color: Color(0xFF0f90f3),
-    );
-    var iosDetails = IOSNotificationDetails();
-    var generalNotificationDetails =
-        NotificationDetails(android: androidDetails, iOS: iosDetails);
-    await fltNotification!.show(0, message.notification!.title ?? '',
-        message.notification!.body ?? '', generalNotificationDetails,
-        payload: 'Notification');
-  }
 
   @override
   Widget build(BuildContext context) {
